@@ -1,6 +1,11 @@
 var express = require('express')
 var app = express()
 
+app.use(function (req, res, next) {
+  res.setHeader('Access-Control-Allow-Origin', '*')
+  next()
+})
+
 app.get('/', function (req, res) {
   res.json({routes: { ships: "/ships" } });
 })
